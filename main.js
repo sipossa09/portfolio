@@ -183,10 +183,14 @@ $("#full i,#full a").on("click", function(){
 //풀페이지에서 스크롤 안되는 문제 해결
 $("#header .xi-bars").click(function(){
     $.fn.fullpage.setAllowScrolling(false);
-})
-$("#full .xi-close").click(function(){
+});
+$("#full .xi-close, #full a").click(function(){
     $.fn.fullpage.setAllowScrolling(true);
-})
+});
+
+// $(".overTxt").on("mousewheel scroll", function(e){
+//     e.stopPropagation();
+// })
    
 ////////////////end///////////////
 });
