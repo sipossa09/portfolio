@@ -43,6 +43,14 @@ $(".m02 .xi-pause").on("click", function(){
     $("#portfolio01").YTPPause();
 });
 
+$(".m02 .xi-volume-up").on("click", function(){
+    $("#portfolio01").YTPUnmute();
+});
+
+$(".m02 .xi-volume-mute").on("click", function(){
+    $("#portfolio01").YTPMute();
+});
+
 //포플동영상제어
 $("#portfolio02").YTPlayer({
     containment:'.portfolio02',
@@ -62,6 +70,13 @@ $(".m03 .xi-pause").on("click", function(){
     $("#portfolio02").YTPPause();
 });
 
+$(".m03 .xi-volume-up").on("click", function(){
+    $("#portfolio02").YTPUnmute();
+});
+
+$(".m03 .xi-volume-mute").on("click", function(){
+    $("#portfolio02").YTPMute();
+});
 
 //포플동영상제어
 $("#portfolio03").YTPlayer({
@@ -76,13 +91,24 @@ $("#portfolio03").YTPlayer({
 
 $(".m04 .xi-play").on("click", function(){
     $("#portfolio03").YTPPlay();
+    $("#portfolio03").YTPUnmute()
 });
 
 $(".m04 .xi-pause").on("click", function(){
     $("#portfolio03").YTPPause();
+  	
+});
+
+$(".m04 .xi-volume-up").on("click", function(){
+    $("#portfolio03").YTPUnmute();
+});
+
+$(".m04 .xi-volume-mute").on("click", function(){
+    $("#portfolio03").YTPMute();
 });
 
 //포플동영상제어
+//$("#portfolio04").YTPlaylist(videos, false);
 $("#portfolio04").YTPlayer({
     containment:'.portfolio04',
     autoPlay:true, 
@@ -90,7 +116,18 @@ $("#portfolio04").YTPlayer({
     showControls: false,
     playOnlyIfVisible: true,
     optimizeDisplay:false,
+    showYTLogo:false,
 });
+
+$("#portfolio04").on("YTPTime", function(e){
+    var totalTime=$(this).YTPGetTotalTime();
+    var currentTime=$(this).YTPGetTime();
+    console.log(totalTime,currentTime);
+    $(".time").html( currentTime + " / " + totalTime)
+})
+
+
+
 
 
 $(".m05 .xi-play").on("click", function(){
@@ -101,7 +138,13 @@ $(".m05 .xi-pause").on("click", function(){
     $("#portfolio04").YTPPause();
 });
 
+$(".m05 .xi-volume-up").on("click", function(){
+    $("#portfolio04").YTPUnmute();
+});
 
+$(".m05 .xi-volume-mute").on("click", function(){
+    $("#portfolio04").YTPMute();
+});
 
 //photo_slider 슬라이드
 $(".photo_slider").slick({
@@ -135,5 +178,15 @@ $("#header i, .m09 img").on("click", function(){
 $("#full i,#full a").on("click", function(){
     $("#full").removeClass("on")
 });
+
+
+//풀페이지에서 스크롤 안되는 문제 해결
+$("#header .xi-bars").click(function(){
+    $.fn.fullpage.setAllowScrolling(false);
+})
+$("#full .xi-close").click(function(){
+    $.fn.fullpage.setAllowScrolling(true);
+})
+   
 ////////////////end///////////////
 });
